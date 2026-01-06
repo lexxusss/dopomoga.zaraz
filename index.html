@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Поможем решить дела в Украине — быстро и с отчетом</title>
+  <meta name="description" content="Осмотры, доставки, проверки, разовые поручения в Украине. Фото/видео отчет. Оплата из Европы, в т.ч. криптовалютой." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a2d;
+      --card2:#0e1730;
+      --text:#e8eefc;
+      --muted:#b8c4e6;
+      --line:rgba(255,255,255,.12);
+      --accent:#7c5cff;
+      --accent2:#2ee59d;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 20% 10%, rgba(124,92,255,.35), transparent 60%),
+        radial-gradient(900px 500px at 80% 20%, rgba(46,229,157,.18), transparent 60%),
+        linear-gradient(180deg, #070b14 0%, var(--bg) 100%);
+      overflow-x:hidden;
+    }
+    a{color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    .nav{
+      position:sticky;top:0;z-index:20;
+      backdrop-filter: blur(10px);
+      background:rgba(7,11,20,.6);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .logo{
+      width:34px;height:34px;border-radius:12px;
+      background: linear-gradient(135deg, rgba(124,92,255,1), rgba(46,229,157,.9));
+      box-shadow: 0 12px 30px rgba(124,92,255,.25);
+    }
+    .nav-links{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+    .nav-links a{
+      text-decoration:none;
+      color:var(--muted);
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:12px;
+    }
+    .nav-links a:hover{background:rgba(255,255,255,.06);color:var(--text)}
+    .btn{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:600;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      user-select:none;
+    }
+    .btn:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18)}
+    .btn:active{transform: translateY(1px)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(124,92,255,.70));
+      border-color: rgba(124,92,255,.55);
+      box-shadow: 0 14px 40px rgba(124,92,255,.25);
+    }
+    .btn.primary:hover{border-color: rgba(124,92,255,.75)}
+    .btn.green{
+      background: linear-gradient(135deg, rgba(46,229,157,.95), rgba(46,229,157,.70));
+      border-color: rgba(46,229,157,.55);
+      box-shadow: 0 14px 40px rgba(46,229,157,.16);
+      color:#07140e;
+    }
+    .btn.ghost{background:transparent}
+    .pill{
+      display:inline-flex;gap:8px;align-items:center;
+      padding:8px 10px;border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .hero{padding:46px 0 22px}
+    .hero-grid{display:grid;grid-template-columns: 1.35fr .65fr;gap:22px;align-items:stretch}
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:26px;
+      box-shadow: var(--shadow);
+    }
+    .hero h1{margin:14px 0 10px;font-size:40px;line-height:1.08;letter-spacing:-.02em}
+    .hero p{margin:0;color:var(--muted);font-size:16px;line-height:1.5}
+    .hero-cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .hero-badges{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+    .side-card{
+      background: linear-gradient(180deg, rgba(15,26,45,.95), rgba(14,23,48,.88));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+      display:flex;flex-direction:column;gap:12px;
+    }
+    .side-title{font-weight:800}
+    .side-text{color:var(--muted);font-size:14px;line-height:1.45}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{
+      font-size:12px;color:var(--muted);
+      padding:7px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+    }
+    .section{padding:34px 0}
+    .section h2{margin:0 0 10px;font-size:28px;letter-spacing:-.01em}
+    .section .sub{margin:0;color:var(--muted);line-height:1.5}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+    .card{
+      background: rgba(255,255,255,.05);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:16px;
+    }
+    .card h3{margin:0 0 6px;font-size:16px}
+    .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.45}
+    .steps{margin-top:18px;display:grid;gap:12px}
+    .step{
+      display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:flex-start;
+      background: rgba(255,255,255,.05);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:14px;
+    }
+    .num{
+      width:44px;height:44px;border-radius:16px;
+      display:flex;align-items:center;justify-content:center;
+      background: rgba(124,92,255,.18);
+      border:1px solid rgba(124,92,255,.35);
+      font-weight:800;
+    }
+    .step b{display:block;margin-bottom:4px}
+    .faq{margin-top:18px;display:grid;gap:10px}
+    details{
+      background: rgba(255,255,255,.05);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:12px 14px;
+    }
+    summary{cursor:pointer;font-weight:700}
+    details p{margin:10px 0 0;color:var(--muted);line-height:1.5}
+    .review{
+      display:flex;flex-direction:column;gap:10px;
+      background: rgba(255,255,255,.05);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:16px;
+    }
+    .review .who{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .avatar{width:38px;height:38px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid var(--line)}
+    .review .meta{display:flex;align-items:center;gap:10px}
+    .review .name{font-weight:800}
+    .review .tag{color:var(--muted);font-size:13px}
+    .review .text{color:var(--muted);line-height:1.55;margin:0}
+    .cta-band{
+      margin-top:18px;
+      background: linear-gradient(135deg, rgba(124,92,255,.20), rgba(46,229,157,.12));
+      border:1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius);
+      padding:18px;
+      display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    }
+    .cta-band .left{display:flex;flex-direction:column;gap:6px}
+    .cta-band .left b{font-size:18px}
+    .cta-band .left span{color:var(--muted)}
+    footer{
+      padding:26px 0 46px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Modal */
+    .modal-backdrop{
+      position:fixed;inset:0;z-index:50;
+      background:rgba(0,0,0,.58);
+      display:none;
+      padding:18px;
+    }
+    .modal{
+      max-width:760px;margin:0 auto;
+      background: linear-gradient(180deg, rgba(15,26,45,.98), rgba(14,23,48,.94));
+      border:1px solid rgba(255,255,255,.14);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modal-head{
+      padding:16px 18px;
+      border-bottom:1px solid var(--line);
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+    }
+    .modal-title{font-weight:900}
+    .icon-btn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      width:38px;height:38px;border-radius:14px;
+      cursor:pointer;
+    }
+    .modal-body{padding:16px 18px}
+    .progress{
+      height:10px;border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      overflow:hidden;
+      margin-bottom:14px;
+    }
+    .bar{height:100%;width:0;background: linear-gradient(90deg, rgba(124,92,255,.95), rgba(46,229,157,.85));}
+    .q{font-size:16px;font-weight:900;margin:0 0 10px}
+    .hint{color:var(--muted);font-size:13px;margin:0 0 10px;line-height:1.45}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .opt{
+      flex: 1 1 170px;
+      text-align:left;
+      padding:12px 12px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      cursor:pointer;
+      font-weight:700;
+    }
+    .opt:hover{background:rgba(255,255,255,.08)}
+    .opt.active{border-color: rgba(124,92,255,.55); background: rgba(124,92,255,.14)}
+    label{display:block;font-size:13px;color:var(--muted);margin:10px 0 6px}
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      outline:none;
+    }
+    textarea{min-height:110px;resize:vertical}
+    input::placeholder, textarea::placeholder{color:rgba(184,196,230,.65)}
+    .err{color:#ffb3b3;font-size:13px;margin-top:8px;display:none}
+    .modal-foot{
+      padding:14px 18px;
+      border-top:1px solid var(--line);
+      display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+    }
+    .muted{color:var(--muted);font-size:13px}
+    .btn.small{padding:9px 12px;border-radius:12px;font-size:14px}
+
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .hero h1{font-size:34px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>UA Assist</div>
+        </div>
+        <div class="nav-links">
+          <a href="#services">Услуги</a>
+          <a href="#how">Как работаем</a>
+          <a href="#reviews">Отзывы</a>
+          <a href="#faq">FAQ</a>
+          <button class="btn primary" id="openFormTop">Оставить заявку</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <span class="pill">Дела в Украине, пока вы в Европе • фото/видео отчет • быстро</span>
+          <h1>Решим вашу задачу в Украине без лишней возни</h1>
+          <p>
+            Осмотры, доставки, проверки, разовые поручения. Вы описываете задачу — мы согласуем цену и сроки,
+            выполняем и присылаем понятный отчет.
+          </p>
+
+          <div class="hero-cta">
+            <button class="btn green" id="openFormHero">Оставить заявку (2 минуты)</button>
+            <a class="btn" href="#services">Посмотреть примеры</a>
+          </div>
+
+          <div class="hero-badges">
+            <span class="pill">Без финансовых операций и передачи налички</span>
+            <span class="pill">Цена фиксируется до начала</span>
+            <span class="pill">Поддержка в мессенджере</span>
+          </div>
+        </div>
+
+        <aside class="side-card">
+          <div class="side-title">Написать менеджеру</div>
+          <div class="side-text">
+            Можно сразу в мессенджер. Сейчас кнопки-заглушки (позже подставите контакты).
+          </div>
+          <div class="chips">
+            <a class="btn" href="#" onclick="return false;">WhatsApp</a>
+            <a class="btn" href="#" onclick="return false;">Telegram</a>
+            <a class="btn" href="#" onclick="return false;">Viber</a>
+          </div>
+          <div class="card" style="margin-top:4px;">
+            <h3 style="margin:0 0 6px;">Чтобы не писать “привет”</h3>
+            <p style="margin:0;color:var(--muted);font-size:13px;line-height:1.45">
+              Чуть позже сделаем шаблон сообщения, который сразу попросит город, срок и описание.
+              А пока лучше оставить заявку через форму — так быстрее.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="services">
+      <div class="container">
+        <h2>Что мы делаем</h2>
+        <p class="sub">Набор услуг для старта — без серых зон и без финопераций. Если вашей задачи нет в списке, выбирайте “Другое”.</p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Осмотр авто перед покупкой</h3>
+            <p>Фото/видео, чек-лист, краткий вывод. По возможности — тест-драйв и проверка документов (в рамках разумного).</p>
+          </div>
+          <div class="card">
+            <h3>Проверка квартиры/дома</h3>
+            <p>Состояние, счетчики, фото, замечания. Удобно, когда жилье пустует или идет ремонт.</p>
+          </div>
+          <div class="card">
+            <h3>Доставка документов/посылки</h3>
+            <p>Забрать и доставить, подтверждение получения, аккуратная упаковка при необходимости.</p>
+          </div>
+          <div class="card">
+            <h3>Забрать / передать вещи</h3>
+            <p>Заберем, сфотографируем, упакуем и передадим/отправим по согласованной схеме.</p>
+          </div>
+          <div class="card">
+            <h3>Разовое поручение</h3>
+            <p>Съездить, уточнить, проверить, сфотографировать, получить справку по месту (если это реально и законно).</p>
+          </div>
+          <div class="card">
+            <h3>Другое</h3>
+            <p>Опишите задачу своими словами. Если она ок по правилам — предложим решение и цену.</p>
+          </div>
+        </div>
+
+        <div class="cta-band">
+          <div class="left">
+            <b>Нужно быстро?</b>
+            <span>Оставьте заявку — менеджер уточнит детали и вернется с ценой и сроками.</span>
+          </div>
+          <button class="btn primary" id="openFormServices">Оставить заявку</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="container">
+        <h2>Как мы работаем</h2>
+        <p class="sub">Понятно и по шагам. Никаких сюрпризов посередине.</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="num">1</div>
+            <div>
+              <b>Вы оставляете заявку</b>
+              <div class="muted">Через форму на сайте: тип задачи, город, срок, короткое описание.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <div>
+              <b>Менеджер уточняет детали</b>
+              <div class="muted">Свяжемся в указанном вами канале: Telegram/WhatsApp/Viber/телефон/email.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <div>
+              <b>Согласуем цену и сроки</b>
+              <div class="muted">Цена фиксируется до начала работ. Если задача меняется — согласуем заново.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">4</div>
+            <div>
+              <b>Выполняем и присылаем отчет</b>
+              <div class="muted">Фото/видео и короткое резюме, что сделано и что важно знать.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Что мы не делаем</h3>
+            <p>
+              Финансовые операции и передача налички, незаконные поручения, опасные грузы,
+              любые схемы “на грани”. Если сомнительно — просто не берем.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Прозрачность</h3>
+            <p>
+              Фиксируем договоренности до начала. Если возникают риски или что-то идет не так —
+              предупреждаем сразу, без “постфактума”.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <div class="container">
+        <h2>Отзывы</h2>
+        <p class="sub">Здесь примеры-заглушки. Потом замените на реальные (лучше с городом и типом задачи).</p>
+
+        <div class="grid-3" style="margin-top:18px">
+          <div class="review">
+            <div class="who">
+              <div class="meta">
+                <div class="avatar" aria-hidden="true"></div>
+                <div>
+                  <div class="name">Марина</div>
+                  <div class="tag">Проверка квартиры • Киев</div>
+                </div>
+              </div>
+              <div class="tag">★★★★★</div>
+            </div>
+            <p class="text">Все сделали быстро: фото, счетчики, состояние. Понравилось, что без лишних разговоров и с нормальным отчетом.</p>
+          </div>
+
+          <div class="review">
+            <div class="who">
+              <div class="meta">
+                <div class="avatar" aria-hidden="true"></div>
+                <div>
+                  <div class="name">Сергей</div>
+                  <div class="tag">Осмотр авто • Львов</div>
+                </div>
+              </div>
+              <div class="tag">★★★★★</div>
+            </div>
+            <p class="text">Прислали видео, показали нюансы по кузову, сэкономили мне поездку. По итогу машину не взял — и рад.</p>
+          </div>
+
+          <div class="review">
+            <div class="who">
+              <div class="meta">
+                <div class="avatar" aria-hidden="true"></div>
+                <div>
+                  <div class="name">Олег</div>
+                  <div class="tag">Доставка документов • Одесса</div>
+                </div>
+              </div>
+              <div class="tag">★★★★★</div>
+            </div>
+            <p class="text">Доставили документы, прислали подтверждение получения. Все четко по времени.</p>
+          </div>
+        </div>
+
+        <div class="cta-band">
+          <div class="left">
+            <b>Хотите так же?</b>
+            <span>Оставьте заявку — ответим с конкретикой: сроки, цена, что нужно от вас.</span>
+          </div>
+          <button class="btn primary" id="openFormReviews">Оставить заявку</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <h2>FAQ</h2>
+        <p class="sub">Коротко. Если вопрос сложнее — менеджер разберет в личке.</p>
+
+        <div class="faq">
+          <details>
+            <summary>Сколько это стоит?</summary>
+            <p>Зависит от города, срочности и сложности. Сначала уточняем детали, потом фиксируем цену до начала работ.</p>
+          </details>
+          <details>
+            <summary>Как быстро вы отвечаете?</summary>
+            <p>По MVP обещайте только то, что реально выдержите. Например: “в течение рабочего дня” или “в течение 1–3 часов”.</p>
+          </details>
+          <details>
+            <summary>Можно ли оплатить криптовалютой?</summary>
+            <p>Да, в будущем будет. На MVP достаточно фразы: “Оплата обсуждается индивидуально”. Потом замените на конкретику.</p>
+          </details>
+          <details>
+            <summary>Какие задачи вы не берете?</summary>
+            <p>Финансовые операции и передача налички, незаконные поручения, опасные грузы и любые сомнительные истории.</p>
+          </details>
+        </div>
+
+        <div class="cta-band">
+          <div class="left">
+            <b>Есть задача?</b>
+            <span>Лучше через форму — так мы сразу получим все детали и быстрее начнем.</span>
+          </div>
+          <button class="btn green" id="openFormFaq">Оставить заявку</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;">
+        <div>
+          <b style="color:var(--text)">UA Assist</b><br/>
+          <span>Сервис поручений и проверок в Украине для тех, кто живет в Европе.</span>
+        </div>
+        <div>
+          <div>Контакты менеджера: <span style="opacity:.85">позже</span></div>
+          <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">
+            <a class="btn small" href="#" onclick="return false;">WhatsApp</a>
+            <a class="btn small" href="#" onclick="return false;">Telegram</a>
+            <a class="btn small" href="#" onclick="return false;">Viber</a>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:14px;opacity:.85">
+        <span>© <span id="year"></span> UA Assist. Все права защищены.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Form Wizard -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-label="Форма заявки">
+    <div class="modal" role="document">
+      <div class="modal-head">
+        <div class="modal-title">Оставить заявку</div>
+        <button class="icon-btn" id="closeModal" aria-label="Закрыть">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="progress"><div class="bar" id="progressBar"></div></div>
+
+        <!-- Step content mounts here -->
+        <div id="stepMount"></div>
+
+        <div class="err" id="stepError">Проверьте поля — кажется, чего-то не хватает.</div>
+      </div>
+      <div class="modal-foot">
+        <div class="muted" id="stepHint">Шаг 1 из 6</div>
+        <div class="row" style="justify-content:flex-end">
+          <button class="btn small ghost" id="backBtn">Назад</button>
+          <button class="btn small primary" id="nextBtn">Дальше</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---- helpers
+    const $ = (id) => document.getElementById(id);
+    const esc = (s) => String(s).replace(/[&<>"']/g, (c)=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+    const nowYear = new Date().getFullYear();
+    $("year").textContent = nowYear;
+
+    // ---- modal open/close
+    const modal = $("modalBackdrop");
+    const openButtons = ["openFormTop","openFormHero","openFormServices","openFormReviews","openFormFaq"]
+      .map(id => $(id)).filter(Boolean);
+
+    function openModal(){
+      modal.style.display = "block";
+      document.body.style.overflow = "hidden";
+      renderStep();
+      setTimeout(() => {
+        const firstInput = modal.querySelector("input,select,textarea,button.opt");
+        if(firstInput) firstInput.focus();
+      }, 30);
+    }
+    function closeModal(){
+      modal.style.display = "none";
+      document.body.style.overflow = "";
+      $("stepError").style.display = "none";
+    }
+    openButtons.forEach(btn => btn.addEventListener("click", openModal));
+    $("closeModal").addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
+    document.addEventListener("keydown", (e) => { if(e.key === "Escape" && modal.style.display === "block") closeModal(); });
+
+    // ---- wizard state
+    const state = {
+      category: "",
+      city: "",
+      cityOther: "",
+      dueType: "",
+      dueDate: "",
+      description: "",
+      contactChannel: "",
+      contactValue: "",
+      // Files will be added later if needed
+    };
+
+    const steps = [
+      { key:"category", title:"Тип задачи", render: renderCategory, validate: validateCategory },
+      { key:"city", title:"Город", render: renderCity, validate: validateCity },
+      { key:"due", title:"Срок", render: renderDue, validate: validateDue },
+      { key:"description", title:"Описание", render: renderDescription, validate: validateDescription },
+      { key:"contact", title:"Контакт", render: renderContact, validate: validateContact },
+      { key:"review", title:"Проверка", render: renderReview, validate: () => true },
+    ];
+    let stepIndex = 0;
+
+    const mount = $("stepMount");
+    const progressBar = $("progressBar");
+    const stepHint = $("stepHint");
+    const backBtn = $("backBtn");
+    const nextBtn = $("nextBtn");
+
+    backBtn.addEventListener("click", () => {
+      $("stepError").style.display = "none";
+      if(stepIndex === 0) return;
+      stepIndex -= 1;
+      renderStep();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      $("stepError").style.display = "none";
+      const ok = steps[stepIndex].validate();
+      if(!ok){
+        $("stepError").style.display = "block";
+        return;
+      }
+      if(stepIndex < steps.length - 1){
+        stepIndex += 1;
+        renderStep();
+        return;
+      }
+      // submit (placeholder)
+      renderSuccess();
+    });
+
+    function renderStep(){
+      const total = steps.length;
+      const current = stepIndex + 1;
+      stepHint.textContent = `Шаг ${current} из ${total}`;
+      progressBar.style.width = `${Math.round((current-1)/(total-1)*100)}%`;
+
+      backBtn.style.visibility = (stepIndex === 0) ? "hidden" : "visible";
+      nextBtn.textContent = (stepIndex === total - 1) ? "Отправить" : "Дальше";
+
+      mount.innerHTML = "";
+      steps[stepIndex].render();
+    }
+
+    // ---- Step 1: Category
+    function renderCategory(){
+      mount.innerHTML = `
+        <p class="q">Выберите тип задачи</p>
+        <p class="hint">Если вашей задачи нет в списке — выберите “Другое” и опишите своими словами.</p>
+        <div class="row">
+          ${optBtn("Осмотр авто")}
+          ${optBtn("Проверка жилья")}
+          ${optBtn("Доставка документов/посылки")}
+          ${optBtn("Забрать/передать вещи")}
+          ${optBtn("Разовое поручение")}
+          ${optBtn("Другое")}
+        </div>
+      `;
+      bindOptButtons("category");
+    }
+    function validateCategory(){
+      return !!state.category;
+    }
+
+    // ---- Step 2: City
+    function renderCity(){
+      const cityVal = state.city === "Другой город" ? state.cityOther : state.city;
+      mount.innerHTML = `
+        <p class="q">В каком городе Украины нужно выполнить задачу?</p>
+        <p class="hint">Можно выбрать из списка или указать свой вариант.</p>
+
+        <label>Город</label>
+        <select id="citySelect">
+          <option value="">Выберите…</option>
+          <option ${sel("Киев")}>Киев</option>
+          <option ${sel("Львов")}>Львов</option>
+          <option ${sel("Одесса")}>Одесса</option>
+          <option ${sel("Днепр")}>Днепр</option>
+          <option ${sel("Харьков")}>Харьков</option>
+          <option ${sel("Другой город")}>Другой город</option>
+        </select>
+
+        <div id="cityOtherWrap" style="display:${state.city === "Другой город" ? "block" : "none"}">
+          <label>Укажите город</label>
+          <input id="cityOther" placeholder="Например: Винница" value="${esc(state.cityOther || "")}" />
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+          <h3 style="margin:0 0 6px;">Подсказка</h3>
+          <p style="margin:0;color:var(--muted);font-size:13px;line-height:1.45">
+            Если задача привязана к конкретному адресу — просто укажите его позже в описании (или менеджер уточнит).
+          </p>
+        </div>
+      `;
+      const selEl = $("citySelect");
+      selEl.addEventListener("change", () => {
+        state.city = selEl.value;
+        $("cityOtherWrap").style.display = (state.city === "Другой город") ? "block" : "none";
+      });
+      const otherEl = $("cityOther");
+      if(otherEl){
+        otherEl.addEventListener("input", () => state.cityOther = otherEl.value);
+      }
+    }
+    function validateCity(){
+      if(!state.city) return false;
+      if(state.city === "Другой город"){
+        return (state.cityOther || "").trim().length >= 2;
+      }
+      return true;
+    }
+
+    // ---- Step 3: Due
+    function renderDue(){
+      mount.innerHTML = `
+        <p class="q">Когда нужно выполнить задачу?</p>
+        <p class="hint">Если сроки плавающие — выберите “в ближайшие дни” и напишите детали в описании.</p>
+        <div class="row">
+          ${optBtn("Сегодня", "dueType")}
+          ${optBtn("Завтра", "dueType")}
+          ${optBtn("В ближайшие дни", "dueType")}
+          ${optBtn("К конкретной дате", "dueType")}
+        </div>
+
+        <div id="dateWrap" style="display:${state.dueType === "К конкретной дате" ? "block" : "none"}; margin-top:12px;">
+          <label>Дата</label>
+          <input id="dueDate" type="date" value="${esc(state.dueDate || "")}" />
+        </div>
+      `;
+      bindOptButtons("dueType");
+
+      const dateWrap = $("dateWrap");
+      const dateEl = $("dueDate");
+      if(dateEl){
+        dateEl.addEventListener("input", () => state.dueDate = dateEl.value);
+      }
+
+      // show/hide date input when dueType changes
+      const buttons = mount.querySelectorAll("button.opt");
+      buttons.forEach(b => {
+        b.addEventListener("click", () => {
+          const show = state.dueType === "К конкретной дате";
+          if(dateWrap) dateWrap.style.display = show ? "block" : "none";
+        });
+      });
+    }
+    function validateDue(){
+      if(!state.dueType) return false;
+      if(state.dueType === "К конкретной дате"){
+        return !!state.dueDate;
+      }
+      return true;
+    }
+
+    // ---- Step 4: Description
+    function renderDescription(){
+      mount.innerHTML = `
+        <p class="q">Опишите задачу</p>
+        <p class="hint">Напишите по сути. Пример: “Нужно осмотреть авто, сфоткать кузов, салон, VIN, прислать видео и краткий вывод”.</p>
+
+        <label>Описание</label>
+        <textarea id="desc" placeholder="Что нужно сделать? Какие детали важны? Есть ли ограничения по времени?" >${esc(state.description || "")}</textarea>
+
+        <div class="card" style="margin-top:14px;">
+          <h3 style="margin:0 0 6px;">Важно</h3>
+          <p style="margin:0;color:var(--muted);font-size:13px;line-height:1.45">
+            Мы не выполняем финансовые операции и не занимаемся передачей налички. Если задача про деньги — лучше не отправляйте, мы все равно откажем.
+          </p>
+        </div>
+      `;
+      $("desc").addEventListener("input", (e) => state.description = e.target.value);
+    }
+    function validateDescription(){
+      return (state.description || "").trim().length >= 20;
+    }
+
+    // ---- Step 5: Contact
+    function renderContact(){
+      mount.innerHTML = `
+        <p class="q">Как с вами связаться?</p>
+        <p class="hint">Выберите удобный канал. Если это номер — укажите с кодом страны (например, +34…, +48…, +380…).</p>
+
+        <label>Канал связи</label>
+        <select id="contactChannel">
+          <option value="">Выберите…</option>
+          <option ${sel2("Telegram")}>Telegram</option>
+          <option ${sel2("WhatsApp")}>WhatsApp</option>
+          <option ${sel2("Viber")}>Viber</option>
+          <option ${sel2("Телефон")}>Телефон</option>
+          <option ${sel2("Email")}>Email</option>
+        </select>
+
+        <div id="contactValueWrap" style="margin-top:10px; display:${state.contactChannel ? "block" : "none"}">
+          <label id="contactLabel">Контакт</label>
+          <input id="contactValue" placeholder="${esc(contactPlaceholder())}" value="${esc(state.contactValue || "")}" />
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+          <h3 style="margin:0 0 6px;">Мы напишем туда, что вы указали</h3>
+          <p style="margin:0;color:var(--muted);font-size:13px;line-height:1.45">
+            Без спама. Только по вашей заявке: уточнение деталей, цена, сроки.
+          </p>
+        </div>
+      `;
+
+      const ch = $("contactChannel");
+      const wrap = $("contactValueWrap");
+      const label = $("contactLabel");
+      const input = $("contactValue");
+
+      ch.addEventListener("change", () => {
+        state.contactChannel = ch.value;
+        wrap.style.display = state.contactChannel ? "block" : "none";
+        label.textContent = "Контакт (" + state.contactChannel + ")";
+        input.placeholder = contactPlaceholder();
+      });
+
+      if(input){
+        input.addEventListener("input", () => state.contactValue = input.value);
+      }
+    }
+
+    function validateContact(){
+      if(!state.contactChannel) return false;
+      const v = (state.contactValue || "").trim();
+      if(state.contactChannel === "Email") return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      if(["WhatsApp","Viber","Телефон"].includes(state.contactChannel)) return /^\+?\d[\d\s()-]{7,}$/.test(v);
+      if(state.contactChannel === "Telegram") return v.length >= 3; // @username или номер/ник
+      return v.length >= 3;
+    }
+
+    // ---- Step 6: Review
+    function renderReview(){
+      const cityFinal = state.city === "Другой город" ? state.cityOther : state.city;
+      const dueFinal = state.dueType === "К конкретной дате" ? state.dueDate : state.dueType;
+
+      mount.innerHTML = `
+        <p class="q">Проверьте заявку</p>
+        <p class="hint">Если что-то не так — нажмите “Назад” и поправьте. Если все ок — “Отправить”.</p>
+
+        <div class="card">
+          <p style="margin:0 0 8px;"><b>Тип:</b> ${esc(state.category)}</p>
+          <p style="margin:0 0 8px;"><b>Город:</b> ${esc(cityFinal)}</p>
+          <p style="margin:0 0 8px;"><b>Срок:</b> ${esc(dueFinal)}</p>
+          <p style="margin:0 0 8px;"><b>Описание:</b><br/><span style="color:var(--muted)">${esc(state.description)}</span></p>
+          <p style="margin:0"><b>Контакт:</b> ${esc(state.contactChannel)} — ${esc(state.contactValue)}</p>
+        </div>
+
+        <div class="card" style="margin-top:12px;">
+          <h3 style="margin:0 0 6px;">Что дальше</h3>
+          <p style="margin:0;color:var(--muted);font-size:13px;line-height:1.45">
+            Менеджер свяжется с вами, уточнит детали и вернется с конкретикой по цене и срокам.
+          </p>
+        </div>
+      `;
+    }
+
+    function renderSuccess(){
+      progressBar.style.width = "100%";
+      backBtn.style.visibility = "hidden";
+      nextBtn.textContent = "Закрыть";
+      nextBtn.classList.remove("primary");
+      nextBtn.classList.add("green");
+
+      // IMPORTANT: here you will later call Make webhook (fetch).
+      // For now we just show success and reset.
+      const cityFinal = state.city === "Другой город" ? state.cityOther : state.city;
+      mount.innerHTML = `
+        <p class="q">Заявка отправлена</p>
+        <p class="hint">Спасибо! Менеджер свяжется с вами в указанном канале.</p>
+
+        <div class="card">
+          <p style="margin:0 0 8px;"><b>Тип:</b> ${esc(state.category)}</p>
+          <p style="margin:0 0 8px;"><b>Город:</b> ${esc(cityFinal)}</p>
+          <p style="margin:0 0 8px;"><b>Срок:</b> ${esc(state.dueType === "К конкретной дате" ? state.dueDate : state.dueType)}</p>
+          <p style="margin:0"><b>Контакт:</b> ${esc(state.contactChannel)} — ${esc(state.contactValue)}</p>
+        </div>
+
+        <div class="card" style="margin-top:12px;">
+          <h3 style="margin:0 0 6px;">Заглушка отправки</h3>
+          <p style="margin:0;color:var(--muted);font-size:13px;line-height:1.45">
+            Сейчас данные никуда не уходят. Позже подключим Make webhook и запись в Postgres.
+          </p>
+        </div>
+      `;
+
+      // Close behavior
+      nextBtn.onclick = () => {
+        // reset state for next time
+        state.category=""; state.city=""; state.cityOther=""; state.dueType=""; state.dueDate="";
+        state.description=""; state.contactChannel=""; state.contactValue="";
+        stepIndex = 0;
+        nextBtn.onclick = null;
+        nextBtn.classList.remove("green");
+        nextBtn.classList.add("primary");
+        closeModal();
+      };
+    }
+
+    // ---- Option buttons helpers
+    function optBtn(label, field="category"){
+      const active = (state[field] === label) ? "active" : "";
+      return `<button class="opt ${active}" type="button" data-field="${field}" data-value="${esc(label)}">${esc(label)}</button>`;
+    }
+
+    function bindOptButtons(field){
+      const btns = mount.querySelectorAll(`button.opt[data-field="${field}"]`);
+      btns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          state[field] = btn.dataset.value;
+          btns.forEach(b => b.classList.toggle("active", b === btn));
+        });
+      });
+    }
+
+    function sel(v){ return state.city === v ? "selected" : ""; }
+    function sel2(v){ return state.contactChannel === v ? "selected" : ""; }
+    function contactPlaceholder(){
+      if(state.contactChannel === "Email") return "name@example.com";
+      if(state.contactChannel === "Telegram") return "@username или ссылка на профиль";
+      if(["WhatsApp","Viber","Телефон"].includes(state.contactChannel)) return "+34 600 000 000";
+      return "Введите контакт";
+    }
+  </script>
+</body>
+</html>
